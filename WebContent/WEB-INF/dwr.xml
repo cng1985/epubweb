@@ -1,0 +1,20 @@
+<!DOCTYPE dwr PUBLIC
+    "-//GetAhead Limited//DTD Direct Web Remoting 3.0//EN"
+    "http://directwebremoting.org/schema/dwr30.dtd">
+
+<dwr>
+
+  <!-- init is only needed if you are extending DWR 
+  <init>
+    <creator id="..." class="..."/>
+    <converter id="..." class="..."/>
+  </init>
+-->
+  <!-- without allow, DWR isn't allowed to do anything -->
+  <allow>
+    <create creator="com.baoyi.dwr.Work" scope="application" javascript="Work"></create>
+  </allow>
+
+  <!-- you may need to tell DWR about method signatures -->
+
+</dwr>

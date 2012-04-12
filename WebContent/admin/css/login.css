@@ -1,0 +1,57 @@
+/* CSS Document */
+* { padding:0; margin:0; }
+body, th, td, input, select, textarea { font: 12px/1.5em  Arial, Helvetica, sans-serif; }
+body, h1, h2, h3, h4, h5, h6, p, ul, dl, dt, dd, form, img,fieldset { margin: 0; padding: 0;border:none; list-style-type:none; }
+h1, h2, h3, h4, h5, h6 { font-size: 1em; }
+ul li { list-style: none; }
+select { margin-right: 2px; }
+a { color: #ccc; text-decoration: none; }
+a:hover { text-decoration: underline; }
+a img { border: none; }
+em { font-style:normal;}
+div{margin:0 auto; padding:0;}
+.clearfix:after{content:"."; display:block; height:0; clear:both;visibility:hidden;}
+*html .clearfix{ height:1%;}
+*+html .clearfix{ height:1%;}
+.clear { clear:both; height:0px; display:block; visibility:hidden;}
+.blank { height:10px; clear:both; display:block; overflow:hidden;}
+#container{width:100%; top:50px;}
+.bodybj { background-color:#6a9ed7}
+/* head */
+#top{ width:100%; padding:50px 0 0 0;}
+.top_pan{width:960px; height:117px; position:relative; margin:0 auto;}
+.top_pan img{width:282px; height:38px; display:block; position:relative; top:34px; left:18px;}
+.top_con{color:#add4f5; margin-left:18px; font-size:14px; position:absolute; margin-top:12px; top:70px;}
+/* form */
+#login_body{ width:100%;background:url(../images/login_bg.jpg) repeat; height:330px;}
+#login_pan{width:570px;height:332px;margin:0 auto;}
+
+#login_pan h2{ height:40px; line-height:40px; background:url(../images/lhighs.gif) no-repeat 10px 27px; font-size:16px; color:#000000; letter-spacing:3px; font-weight:bolder; padding:10px 0 0 20px;}
+#login_pan h2 span{font-family:Verdana, Arial, Helvetica, sans-serif; font-size:15px; color:#1a4478; margin-left:6px; font-weight:bold; letter-spacing:0px;}
+
+.loginmain{width:558px; height:251px; background:url(../images/form_bg.png) no-repeat; padding:40px 0 0 50px;_height:251px;
+_background: none; _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,  src="images/form_bg.png");}
+
+#login_pan form label{width:90px; height:22px; color:#b5bac0; font-weight:bold; display:block; float:left; padding: 0 0 0 30px; margin:9px 0 0;}
+#login_password,#login_username{width:190px; height:18px; font-size:15px;border:1px inset #BFB492;}
+#login_check{width:90px; height:18px; font-size:15px; display:block; float:left; margin:9px 0 0 0;border:1px inset #BFB492;}
+.login_forget{ color:#476485; font-size:14px;letter-spacing:2px; float:left; width:80px; height:35px; line-height:35px;}
+.btn_forget { float:right; width:80px;}
+.button{ width:80px; height:31px; display:block; background:url(../images/botton_bg.jpg) 0 0 no-repeat #000; border:none; font:14px bold; text-align:center; cursor:pointer}
+.login_main { width:280px;_width:270px; border:0; _z-index:10000px; _position:relative }
+.login_main th { color:#FFFFFF; width:80px; font-size:14px; font-weight:bold;}
+.login_main td { padding:5px 0 5px 0;  }
+.code { height:35px;}
+.code img { width: 130px;}
+/* foot */
+#foot_pan{ height:auto;padding:0;}
+#foot_main{ width:960px; margin:0 auto; padding:45px 0 0 0}
+.foot_home { float:left; width:100px;}
+.foot_home img { float:right;}
+.foot_support { float:right; widows:300px; padding:0 70px 0 0; display:inline;}
+.foot_support img { padding:0 15px; display:inline; overflow:hidden;}
+/** error */
+h3.error {
+  font-weight: bold;
+  color: #b80000;
+}

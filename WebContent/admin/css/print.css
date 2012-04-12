@@ -1,0 +1,27 @@
+@charset "utf-8";
+/* 打印的样式控制 */
+
+<style media="print"> 
+.Noprint{display:none;} 
+.PageNext{page-break-after: always;} 
+</style> 
+.tdp 
+{
+border-bottom:#000000 solid 1px;
+border-left:#000000 solid 1px;  
+} 
+.tabp 
+{ 
+border-color: #000000 #000000 #000000 #000000; 
+border-style: solid; 
+border-top-width: 1px; 
+border-right-width: 1px; 
+border-bottom-width: 1px; 
+border-left-width: 1px; 
+} 
+.NOPRINT { 
+font-family: "宋体"; 
+font-size: 9pt; 
+} 
+
+

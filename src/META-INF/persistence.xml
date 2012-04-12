@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="epubweb">
+		<class>com.epublib.domain.App</class>
+		<class>com.epublib.domain.Appstart</class>
+		<class>com.epublib.domain.Category</class>
+		<class>com.epublib.domain.Epub</class>
+		<class>com.epublib.domain.Feedback</class>
+		<class>com.epublib.domain.Request</class>
+		<class>com.epublib.domain.Userinfo</class>
+		<properties>
+			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+			<property name="hibernate.connection.url" value="jdbc:mysql://192.168.1.188:3306/epubweb" />
+			<property name="hibernate.connection.username" value="root" />
+			<property name="hibernate.connection.password" value="admin" />
+			<property name="hibernate.search.default.directory_provider"
+				value="filesystem" />
+			<property name="hibernate.search.default.indexBase" value="e:/index" />
+		</properties>
+	</persistence-unit>
+</persistence>

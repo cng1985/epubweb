@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans
-      http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	xsi:schemaLocation="
+      http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+      http://www.springframework.org/schema/context 
+      http://www.springframework.org/schema/context/spring-context-3.0.xsd
+      "
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context">
 	<bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
@@ -28,7 +32,8 @@
 		</property>
 	</bean>
 
-	<bean id="dataSource" class="org.apache.tomcat.dbcp.dbcp.BasicDataSource">
+	<bean id="dataSource" class="org.apache.tomcat.dbcp.dbcp.BasicDataSource"
+		scope="singleton">
 		<property name="driverClassName">
 			<value>${jdbc.driverClassName}</value>
 		</property>
@@ -42,14 +47,107 @@
 			<value>${jdbc.password}</value>
 		</property>
 		<property name="maxActive">
-			<value>80</value>
+			<value>150</value>
 		</property>
 		<property name="maxIdle">
-			<value>20</value>
+			<value>50</value>
 		</property>
 		<property name="maxWait">
-			<value>3000</value>
+			<value>1500</value>
+		</property>
+		<property name="initialSize">
+			<value>50</value>
+		</property>
+	</bean>
+
+	<bean class="com.baoyi.dao.EpubDaoImpl" scope="prototype">
+		<property name="sql_add">
+			<value> INSERT INTO epub (description ,fileurl ,name ,picurl ,
+				sourtnum) VALUES
+				(?,?, ?, ?,?)</value>
+
+		</property>
+		<property name="sql_update">
+			<value> UPDATE epub SET
+				description=?,fileurl=?,name=?,picurl=?,sourtnum=? WHERE id=?
+			</value>
+		</property>
+		<property name="sql_delete">
+			<value> delete from epub WHERE id=? </value>
+		</property>
+		<property name="sql_top">
+			<value> select * from epub order by id desc limit 0,50</value>
+		</property>
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<bean class="com.baoyi.dao.MysqlDaoImpl" scope="prototype">
+		<property name="sql_mysql">
+			<value>show full processlist</value>
+		</property>
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
+	<context:component-scan base-package="com.baoyi.controller" />
+
+	<!-- hibernate配置参数 此处不需注销，只需将jdbc.properties文件中hibernate.hbm2ddl.auto设置为none即可 -->
+	<!-- zhaikun 2010.4.29 START -->
+	<bean id="hibernateProperties"
+		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="properties">
+			<props>
+				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+				<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+				<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
+				<prop key="hibernate.connection.autocommit">${hibernate.connection.autocommit}</prop>
+				<prop key="hibernate.connection.release_mode">${hibernate.connection.release_mode}</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- 配置Hibernate中的SessionFactory -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<!-- zhaikun 2010.4.29 在需要创建数据库是去掉注释，此处不需注销，只需将jdbc.properties文件中hibernate.hbm2ddl.auto设置为none即可 -->
+		<property name="hibernateProperties">
+			<ref bean="hibernateProperties" />
 		</property>
 
+		<property name="mappingDirectoryLocations">
+			<list>
+				<value>classpath:/com/epublib/domain/</value>
+			</list>
+		</property>
 	</bean>
+    <!-- 事务配置  -->
+     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">  
+	     <property name="dataSource" ref="dataSource" />
+	 </bean>
+	<!-- 事务代理配置 -->
+	<bean id="transactionProxy"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean"
+		abstract="true">
+		<property name="transactionManager">
+			<ref bean="transactionManager" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="save*">PROPAGATION_REQUIRED</prop>
+				<prop key="add*">PROPAGATION_REQUIRED</prop>
+				<prop key="pre*">PROPAGATION_REQUIRED</prop>
+				<prop key="delete*">PROPAGATION_REQUIRED</prop>
+				<prop key="modify*">PROPAGATION_REQUIRED</prop>
+				<prop key="edit*">PROPAGATION_REQUIRED</prop>
+				<prop key="set*">PROPAGATION_REQUIRED</prop>
+				<prop key="update*">PROPAGATION_REQUIRED</prop>
+				<prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+				<prop key="release*">PROPAGATION_REQUIRED</prop>
+				<prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+			</props>
+		</property>
+	</bean>
+	<import resource="config/spring/category.xml" />
+
 </beans>
