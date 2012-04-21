@@ -6,6 +6,7 @@
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -45,8 +46,7 @@
 						});
 					});
 				});
-				
-				
+
 				ada = K.create('textarea[name="description"]', {
 					allowFileManager : true
 				});
@@ -54,18 +54,23 @@
 </script>
 </head>
 <body>
-	<form action="add.ada" method="post">
-	<input type="hidden" name="sourtnum" value="1">
+	<form action="epub_add.ada" method="post">
+		<input type="hidden" name="sourtnum" value="1">
 		<table>
 			<tr>
 				<td>电子书名</td>
-				<td><input name="name" />
+				<td><input name="epub.name" />
 				</td>
 			</tr>
 			<tr>
+				<td>分类名</td>
+				<td><s:select list="categorys" listKey="id" listValue="title"
+						name="category.pid" headerKey="0" headerValue="无"></s:select></td>
+			</tr>
+			<tr>
 				<td>上传图片</td>
-				<td><input name="picurl" id="picurl" /> <input type="button"
-					id="insertfile" value="选择文件" />
+				<td><input name="epub.picurl" id="picurl" /> <input
+					type="button" id="insertfile" value="选择文件" />
 				</td>
 			</tr>
 			<tr>
@@ -75,13 +80,14 @@
 			</tr>
 			<tr>
 				<td>上传电子书</td>
-				<td><input name="fileurl" id="fileurl" /><input type="button"
-					id="insertfileurl" value="选择文件" />
+				<td><input name="epub.fileurl" id="fileurl" /><input
+					type="button" id="insertfileurl" value="选择文件" />
 				</td>
 			</tr>
 			<tr>
 				<td>描述</td>
-				<td><textarea name="description" style="width:600px; height:400px;">添加描述</textarea>
+				<td><textarea name="epub.description"
+						style="width: 600px; height: 400px;">添加描述</textarea>
 				</td>
 			</tr>
 			<tr>
@@ -90,7 +96,7 @@
 				</td>
 			</tr>
 		</table>
-		
+
 	</form>
 </body>
 </html>

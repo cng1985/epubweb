@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="epub" extends="globalpackage">
+		<action name="epub_preadd" class="epubAction" method="preAdd">
+			<result name="success">/WEB-INF/jsp/epub/preadd.jsp</result>
+		</action>
+		<action name="epub_add" class="epubAction" method="add">
+			<result name="success" type="redirect">epub_list.action</result>
+		</action>
+		<action name="epub_list" class="epubAction" method="list">
+			<result name="success">/WEB-INF/jsp/epub/list.jsp</result>
+		</action>
+		<action name="epub_preupdate" class="epubAction"
+			method="preUpdate">
+			<result name="success">/WEB-INF/jsp/epub/preupdate.jsp</result>
+		</action>
+		<action name="epub_delete" class="epubAction" method="delete">
+			<result name="success" type="redirect">epub_list.action</result>
+		</action>
+			<action name="epub_update" class="epubAction" method="update">
+			<result name="success" type="redirect">epub_list.action</result>
+		</action>
+	</package>
+</struts>

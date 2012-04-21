@@ -58,7 +58,7 @@
 		<property name="initialSize">
 			<value>50</value>
 		</property>
-				<property name="validationQuery">
+		<property name="validationQuery">
 			<value>select * from epub limit 0,1</value>
 		</property>
 	</bean>
@@ -126,5 +126,5 @@
 		</property>
 	</bean>
 	<import resource="config/spring/category.xml" />
-
+	<import resource="config/spring/epub.xml" />
 </beans>

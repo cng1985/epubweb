@@ -25,8 +25,8 @@ var menu =
 
 
 "company":{"text":"书籍管理","subtext":"可选操作项","default":"introduce","children":{
-	"introduce":{"text":"添加书籍","url":"<%=basePath%>epub/preadd.ada"},
-	"auth":{"text":"书籍列表","url":"<%=basePath%>epub/list.ada"},
+	"introduce":{"text":"添加书籍","url":"<%=basePath%>epub/epub_preadd.ada"},
+	"auth":{"text":"书籍列表","url":"<%=basePath%>epub/epub_list.ada"},
 	"register":{"text":"组织架构","url":"setting.php?do=register"},
 	"honor":{"text":"公司荣誉","url":"company/honor_list.html"},
 	"rule":{"text":"公司制度","url":"company/rule_list.html"},
