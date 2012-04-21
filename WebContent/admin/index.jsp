@@ -19,8 +19,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript">
 var menu = 
 {"dashboard":{"text":"分类管理","subtext":"常用操作","default":"welcome","children":{
-	"categorypreadd":{"text":"添加分类","url":"<%=basePath%>category/preadd.ada"},
-	"welcome":{"text":"分类管理","url":"<%=basePath%>category/list.ada"}}},
+	"categorypreadd":{"text":"添加分类","url":"<%=basePath%>category/category_preadd.ada"},
+	"welcome":{"text":"分类管理","url":"<%=basePath%>category/category_list.ada"}}},
 
 
 

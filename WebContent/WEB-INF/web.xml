@@ -41,15 +41,7 @@
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
 	<!-- Spring mvc -->
-	<servlet>
-		<servlet-name>epubweb</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>epubweb</servlet-name>
-		<url-pattern>*.ada</url-pattern>
-	</servlet-mapping>
+
 
 	<filter>
 		<filter-name>encodingFilter</filter-name>
@@ -65,6 +57,22 @@
 	</filter>
 	<filter-mapping>
 		<filter-name>encodingFilter</filter-name>
+		<url-pattern>*.epubs</url-pattern>
+	</filter-mapping>
+	<filter>
+		<filter-name>struts2</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+		<init-param>
+			<param-name>actionPackages</param-name>
+			<param-value>com.baoyi.actions</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
 		<url-pattern>*.ada</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<url-pattern>*.action</url-pattern>
 	</filter-mapping>
 </web-app>

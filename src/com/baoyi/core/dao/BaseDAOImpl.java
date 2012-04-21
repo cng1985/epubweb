@@ -128,14 +128,27 @@ public class BaseDAOImpl implements BaseDAO {
 
 	// 根据给定的持久化对象,添加记录
 	public Object save(Object object) {
+		Object result=null;
 		Session session = sessionFactory.openSession();
-		return session.save(object);
+		session.beginTransaction();         
+		result=session.save(object);
+		session.getTransaction().commit();    
+		session.close();
+		return result;
 	}
 
 	// 根据给定的持久化对象,删除记录
 	public void delete(Object object) {
-		Session session = sessionFactory.openSession();
-		session.delete(object);
+		try {
+			Session session = sessionFactory.openSession();
+			session.beginTransaction();         
+			session.delete(object);
+			session.getTransaction().commit();    
+			session.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	
 	}
 
 	// 根据给定的持久化对象,删除记录
@@ -156,15 +169,13 @@ public class BaseDAOImpl implements BaseDAO {
 	// 根据给定的持久化对象,更新记录
 	public void update(Object object) {
 		Session session = this.openSession();
-		Transaction tx = null;
-		try {
-			tx = session.beginTransaction();
-			session.saveOrUpdate(object);
-			session.setFlushMode(FlushMode.AUTO);
-			tx.commit();
+		try{
+			session.beginTransaction();    
+			session.update(object);
+			session.getTransaction().commit();    
+			session.close();
 		} catch (Exception e) {
 			e.printStackTrace();
-			tx.rollback();
 		}
 	}
 

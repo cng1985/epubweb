@@ -11,9 +11,9 @@ import com.baoyi.common.page.PageResult;
 
 /**
  * @Class BaseDAO.java
- * @Author 翟昆
+ * @Author ada
  * @Email
- * @Time 2010-4-27
+ * @Time 2012.04.21
  * @Version 1.0
  */
 @SuppressWarnings("unchecked")

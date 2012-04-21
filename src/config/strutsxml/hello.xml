@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="category" extends="globalpackage">
+		<action name="category_preadd" class="categoryAction" method="preAdd">
+			<result name="success">/WEB-INF/jsp/category/preadd.jsp</result>
+		</action>
+		<action name="category_add" class="categoryAction" method="add">
+			<result name="success" type="redirect">category_list.action</result>
+		</action>
+		<action name="category_list" class="categoryAction" method="list">
+			<result name="success">/WEB-INF/jsp/category/list.jsp</result>
+		</action>
+		<action name="category_preupdate" class="categoryAction"
+			method="preUpdate">
+			<result name="success">/WEB-INF/jsp/category/preupdate.jsp</result>
+		</action>
+		<action name="category_delete" class="categoryAction" method="delete">
+			<result name="success" type="redirect">category_list.action</result>
+		</action>
+			<action name="category_update" class="categoryAction" method="update">
+			<result name="success" type="redirect">category_list.action</result>
+		</action>
+	</package>
+</struts>

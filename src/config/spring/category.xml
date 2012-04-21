@@ -8,20 +8,19 @@
       "
 	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context">
 
-	<bean class="com.epublib.category.dao.CategoryDaoImpl" id="categoryDao">
+	<bean class="com.epublib.category.dao.CategoryDaoImpl" id="categoryDao" scope="prototype" >
 		<property name="sessionFactory">
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
-	<bean class="com.epublib.category.service.CategoryServiceImpl" id="categoryServiceImpl">
+	<bean class="com.epublib.category.service.CategoryServiceImpl" id="categoryService" scope="prototype" >
 		<property name="categoryDao">
 			<ref bean="categoryDao" />
 		</property>
 	</bean>
-
-	<bean id="categoryService" parent="transactionProxy">
-		<property name="target">
-			<ref bean="categoryServiceImpl" />
+	<bean id="categoryAction" class="com.baoyi.actions.CategoryAction"  scope="prototype" >
+		<property name="categoryService">
+			<ref bean="categoryService" />
 		</property>
 	</bean>
 </beans>

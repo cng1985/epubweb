@@ -58,6 +58,9 @@
 		<property name="initialSize">
 			<value>50</value>
 		</property>
+				<property name="validationQuery">
+			<value>select * from epub limit 0,1</value>
+		</property>
 	</bean>
 
 	<bean class="com.baoyi.dao.EpubDaoImpl" scope="prototype">
@@ -88,6 +91,7 @@
 	</bean>
 
 	<context:component-scan base-package="com.baoyi.controller" />
+	<context:component-scan base-package="com.baoyi.actions" />
 
 	<!-- hibernate配置参数 此处不需注销，只需将jdbc.properties文件中hibernate.hbm2ddl.auto设置为none即可 -->
 	<!-- zhaikun 2010.4.29 START -->
@@ -119,33 +123,6 @@
 			<list>
 				<value>classpath:/com/epublib/domain/</value>
 			</list>
-		</property>
-	</bean>
-    <!-- 事务配置  -->
-     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">  
-	     <property name="dataSource" ref="dataSource" />
-	 </bean>
-	<!-- 事务代理配置 -->
-	<bean id="transactionProxy"
-		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean"
-		abstract="true">
-		<property name="transactionManager">
-			<ref bean="transactionManager" />
-		</property>
-		<property name="transactionAttributes">
-			<props>
-				<prop key="save*">PROPAGATION_REQUIRED</prop>
-				<prop key="add*">PROPAGATION_REQUIRED</prop>
-				<prop key="pre*">PROPAGATION_REQUIRED</prop>
-				<prop key="delete*">PROPAGATION_REQUIRED</prop>
-				<prop key="modify*">PROPAGATION_REQUIRED</prop>
-				<prop key="edit*">PROPAGATION_REQUIRED</prop>
-				<prop key="set*">PROPAGATION_REQUIRED</prop>
-				<prop key="update*">PROPAGATION_REQUIRED</prop>
-				<prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
-				<prop key="release*">PROPAGATION_REQUIRED</prop>
-				<prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
-			</props>
 		</property>
 	</bean>
 	<import resource="config/spring/category.xml" />

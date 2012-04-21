@@ -6,39 +6,7 @@
 <struts>
 
     <!-- 在此配置所有业务action的xml -->
-	<include file="conf/struts/struts-gete.xml" />
-	<include file="conf/strutsxml/cailiaoziyuantype.xml" />
-	<include file="conf/strutsxml/cailiaoziyuan.xml" />
-	<include file="conf/strutsxml/companytype.xml" />
-	<include file="conf/strutsxml/companyDetail.xml" />
-	<include file="conf/strutsxml/userRole.xml" />
-	<include file="conf/strutsxml/userDepartment.xml" />
-	<include file="conf/strutsxml/userinfo.xml" />
-	<include file="conf/strutsxml/feiyongBaoxiao.xml" />
-	<include file="conf/strutsxml/projectInfo.xml" />
-	<include file="conf/strutsxml/cailiaoyg.xml" />
-	<include file="conf/strutsxml/materialplan.xml" />
-	<include file="conf/strutsxml/userProject.xml" />
-	<include file="conf/strutsxml/cailiaoin.xml" />
-	<include file="conf/strutsxml/cailiaoout.xml" />
-	<include file="conf/strutsxml/projectRizhi.xml" />
-	<include file="conf/strutsxml/qianzheng.xml" />
-	<include file="conf/strutsxml/teammain.xml" />
-	<include file="conf/strutsxml/teamsub.xml" />
-	<include file="conf/strutsxml/lxyonggongdan.xml" />
-	<include file="conf/strutsxml/payprojectplan.xml" />
-	<include file="conf/strutsxml/subpayprojectplan.xml" />
-	<include file="conf/strutsxml/cailiaoyunfei.xml" />
-	<include file="conf/strutsxml/projectqingkuan.xml" />
-	<include file="conf/strutsxml/projectanalysis.xml" />
-	<include file="conf/strutsxml/kucun.xml" />
-	<include file="conf/strutsxml/cailiaoinout.xml" />
-	<include file="conf/strutsxml/materialout.xml" />
-	<include file="conf/strutsxml/workteam.xml" />
-	<include file="conf/strutsxml/withinfixed.xml" />
-	<include file="conf/strutsxml/jfreechart.xml" />
-	<include file="conf/strutsxml/cailiaoback.xml" />
-	<include file="conf/strutsxml/statistics.xml" />
-	<include file="conf/strutsxml/gfzf.xml" />
-	<include file="conf/strutsxml/cailiaosunhao.xml" />
+	<include file="config/strutsxml/struts-base.xml" />
+	<include file="config/strutsxml/hello.xml" />
+	<constant name="struts.devMode" value="true" />
 </struts>
