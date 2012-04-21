@@ -5,18 +5,6 @@
 
 <struts>
 	<package name="globalpackage" extends="struts-default">
-         	<!-- 定义全部的拦截器 -->
-    	<interceptors>
-    		<!-- 定义第一个自定义的拦截器，用于身份校验 -->
-    		<interceptor name="isloginInterceptor" class="com.gete.framework.interceptor.IsLoginInterceptor" />
-			<!-- 定义一个拦截器栈，系统所有Action都需配置 -->
-			<interceptor-stack name="islogin">
-				<interceptor-ref name="isloginInterceptor"></interceptor-ref>
-				<interceptor-ref name="defaultStack"></interceptor-ref>
-			</interceptor-stack>
-    	</interceptors>
-    	
-		<default-interceptor-ref name="islogin"/>
 		
 		
 		
@@ -29,7 +17,6 @@
 		
 		<global-exception-mappings>
 			<!-- 指Action抛出AuctionException异常时，转入名为exception的结果。 -->
-			<exception-mapping exception="com.gete.framework.exception.GlobalException" result="exception"/>
 			<!-- 指Action抛出Exception异常时，转入名为exception的结果。 -->
 			<exception-mapping exception="java.lang.Exception" result="exception"/>
 		</global-exception-mappings>    
