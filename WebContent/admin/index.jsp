@@ -1,9 +1,15 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" 
+	pageEncoding="UTF-8"%>
+<% String path1=request.getServletContext().getContextPath(); 
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=7" />
-<title>工程装饰管理系统</title>
+<title><%=basePath %></title>
 <link href="css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
@@ -13,13 +19,14 @@
 <script type="text/javascript">
 var menu = 
 {"dashboard":{"text":"分类管理","subtext":"常用操作","default":"welcome","children":{
-	"welcome":{"text":"分类管理","url":"category/list.ada"}}},
+	"categorypreadd":{"text":"添加分类","url":"<%=basePath%>category/preadd.ada"},
+	"welcome":{"text":"分类管理","url":"<%=basePath%>category/list.ada"}}},
 
 
 
-"company":{"text":"公司建设","subtext":"可选操作项","default":"introduce","children":{
-	"introduce":{"text":"公司简介","url":"company/info_view.html"},
-	"auth":{"text":"企业理念","url":"setting.php?do=auth"},
+"company":{"text":"书籍管理","subtext":"可选操作项","default":"introduce","children":{
+	"introduce":{"text":"添加书籍","url":"<%=basePath%>epub/preadd.ada"},
+	"auth":{"text":"书籍列表","url":"<%=basePath%>epub/list.ada"},
 	"register":{"text":"组织架构","url":"setting.php?do=register"},
 	"honor":{"text":"公司荣誉","url":"company/honor_list.html"},
 	"rule":{"text":"公司制度","url":"company/rule_list.html"},

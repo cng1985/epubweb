@@ -6,6 +6,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.epublib.category.service.CategoryService;
+import com.epublib.domain.Epub;
 
 public class CategoryServiceApps {
 
@@ -19,6 +20,8 @@ public class CategoryServiceApps {
 		CategoryService service = context.getBean("categoryService",
 				CategoryService.class);
 		List list = service.find("from Epub");
+		Epub epub=new Epub();
+		service.add(epub);
 		System.out.println(list);
 		//setHibernateProperties(Properties)
 		//   hibernateProperties

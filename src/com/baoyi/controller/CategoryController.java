@@ -1,5 +1,7 @@
 package com.baoyi.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -17,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import com.baoyi.dao.CategoryDaoImpl;
 import com.epublib.category.service.CategoryService;
 import com.epublib.domain.Category;
 
@@ -29,21 +30,24 @@ public class CategoryController {
 	private CategoryService categoryService;
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String add(@ModelAttribute("Category") Category Category, Model model,
-			BindingResult result) {
-		categoryService.add(Category);
-		return "Category/add";
+	public String add(@ModelAttribute("category") Category category,
+			Model model, BindingResult result) {
+		categoryService.add(category);
+		return "category/add";
 	}
 
 	@RequestMapping(value = "/preadd", method = RequestMethod.GET)
-	public String preAdd() {
-		return "Category/preadd";
+	public String preAdd(HttpServletRequest request,
+			HttpServletResponse response, ModelMap model) {
+		List<Category> all = categoryService.find("from Category");
+		model.addAttribute("categorys", all);
+		return "category/preadd";
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public String view(@PathVariable String id, Model model) {
 		System.out.println(id);
-		return "Category/add";
+		return "category/add";
 	}
 
 	public HttpSession getSession() {
@@ -58,8 +62,8 @@ public class CategoryController {
 	@RequestMapping("/list")
 	public String list(HttpServletRequest request,
 			HttpServletResponse response, ModelMap model) {
-		model.addAttribute("Categorys",categoryService.find("from Category"));
+		model.addAttribute("Categorys", categoryService.find("from Category"));
 		model.addAttribute("title", "最新上传的电子书");
-		return "Category/list";
+		return "category/list";
 	}
 }

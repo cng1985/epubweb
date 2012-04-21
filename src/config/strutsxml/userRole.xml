@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>	
+	<package name="userrole" namespace="" extends="globalpackage">
+		
+		<action name="listUserRole" class="userRoleAction" method="view">
+			<result name="success">/project/userrole/role_view.jsp</result>
+		</action>
+		<action name="addUserRole" class="userRoleAction" method="add">
+			<result name="success" type="redirect">listUserRole.action</result>
+			<result name="input">/project/userrole/add_role.jsp</result>
+		</action>
+		<action name="editUserRole" class="userRoleAction" method="preupdate">
+			<result name="success">/project/userrole/edit_role.jsp</result>
+		</action>
+		<action name="updateUserRole" class="userRoleAction" method="update">
+			<result name="success" type="redirect">listUserRole.action</result>
+			<result name="input">/project/userrole/edit_role.jsp</result>
+		</action>
+		<action name="deleteUserRole" class="userRoleAction" method="delete">
+			<result name="success" type="redirect">listUserRole.action</result>
+		</action>
+			
+	</package>
+</struts>

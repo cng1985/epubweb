@@ -11,43 +11,34 @@ public class Category implements java.io.Serializable {
 	// Fields
 
 	private Integer id;
-	private Integer name;
+	private Integer userid;
 	private Integer pid;
 	private String username;
-
+	private String title;
 	// Constructors
 
 	/** default constructor */
 	public Category() {
 	}
 
-	/** full constructor */
-	public Category(Integer name, Integer pid, String username) {
-		this.name = name;
-		this.pid = pid;
-		this.username = username;
-	}
-
-	// Property accessors
-
 	public Integer getId() {
-		return this.id;
+		return id;
 	}
 
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public Integer getName() {
-		return this.name;
+	public Integer getUserid() {
+		return userid;
 	}
 
-	public void setName(Integer name) {
-		this.name = name;
+	public void setUserid(Integer userid) {
+		this.userid = userid;
 	}
 
 	public Integer getPid() {
-		return this.pid;
+		return pid;
 	}
 
 	public void setPid(Integer pid) {
@@ -55,11 +46,30 @@ public class Category implements java.io.Serializable {
 	}
 
 	public String getUsername() {
-		return this.username;
+		return username;
 	}
 
 	public void setUsername(String username) {
 		this.username = username;
 	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public Category(Integer id, Integer userid, Integer pid, String username,
+			String title) {
+		super();
+		this.id = id;
+		this.userid = userid;
+		this.pid = pid;
+		this.username = username;
+		this.title = title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
 
 }
