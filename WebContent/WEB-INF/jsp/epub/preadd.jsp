@@ -12,16 +12,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>上传epub电子书</title>
-<link rel="stylesheet"
-	href="<%=basePath%>ui/kindeditor/themes/default/default.css" />
+<link rel="stylesheet" href="<%=basePath%>ui/kindeditor/themes/default/default.css" />
+<link rel="stylesheet" href="<%=basePath%>ui/kindeditor/plugins/code/prettify.css" />
+	
 <script src="<%=basePath%>ui/kindeditor/kindeditor.js"></script>
 <script src="<%=basePath%>ui/kindeditor/lang/zh_CN.js"></script>
+	<script charset="utf-8" src="<%=basePath%>ui/kindeditor/plugins/code/prettify.js"></script>
+
 <script>
 	KindEditor.ready(function(K) {
 		var editor = K.editor({
 			allowFileManager : true,
-			uploadJson : '<%=basePath%>work/upload_json.jsp?dir=image',
-			fileManagerJson : '<%=basePath%>work/file_manager_json.jsp?dir=image'
+			cssPath : '<%=basePath%>ui/kindeditor/plugins/code/prettify.css',
+			uploadJson : '<%=basePath%>ui/kindeditor/jsp/upload_json.jsp?dir=image',
+			fileManagerJson : '<%=basePath%>ui/kindeditor/jsp/file_manager_json.jsp?dir=image'
 						});
 				K('#insertfile').click(function() {
 					editor.loadPlugin('insertfile', function() {
@@ -47,9 +51,13 @@
 					});
 				});
 
-				ada = K.create('textarea[name="description"]', {
-					allowFileManager : true
+				ada = K.create('textarea[name="epub.description"]', {
+					allowFileManager : true,
+					cssPath : '<%=basePath%>ui/kindeditor/plugins/code/prettify.css',
+					uploadJson : '<%=basePath%>ui/kindeditor/jsp/upload_json.jsp?dir=image',
+					fileManagerJson : '<%=basePath%>ui/kindeditor/jsp/file_manager_json.jsp?dir=image'
 				});
+				prettyPrint();
 			});
 </script>
 </head>
@@ -65,7 +73,7 @@
 			<tr>
 				<td>分类名</td>
 				<td><s:select list="categorys" listKey="id" listValue="title"
-						name="category.pid" headerKey="0" headerValue="无"></s:select></td>
+						name="epub.categoryid" headerKey="0" headerValue="无"></s:select></td>
 			</tr>
 			<tr>
 				<td>上传图片</td>

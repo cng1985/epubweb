@@ -5,10 +5,10 @@
 
 <struts>
 
-    <!-- 在此配置所有业务action的xml -->
+	<!-- 在此配置所有业务action的xml -->
 	<include file="config/strutsxml/struts-base.xml" />
 	<include file="config/strutsxml/hello.xml" />
-		<include file="config/strutsxml/epub.xml" />
-	
+	<include file="config/strutsxml/epub.xml" />
+	<include file="config/strutsxml/api.xml" />
 	<constant name="struts.devMode" value="true" />
 </struts>

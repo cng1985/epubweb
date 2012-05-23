@@ -2,10 +2,7 @@ package com.baoyi.actions;
 
 import java.util.List;
 
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.baoyi.common.page.PageResult;
 import com.epublib.category.service.CategoryService;
@@ -94,20 +91,30 @@ public class EpubAction {
 		return "success";
 	}
 
+	public String delete() {
+		epubService.delete(epub);
+		return "success";
+	}
+
+	public String update() {
+		epubService.update(epub);
+		return "success";
+	}
+
+	public String preUpdate() {
+		epub = (Epub) epubService.findById(Epub.class, epub.getId());
+		categorys = categoryService.find("from Category");
+		return "success";
+	}
+
 	public String preAdd() {
 		categorys = categoryService.find("from Category");
 		return "success";
 	}
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public String view(@PathVariable String id, Model model) {
-		System.out.println(id);
-		return "epub/add";
-	}
-
 	@RequestMapping("/list")
 	public String list() {
-		String sql = "from Epub";
+		String sql = "from Epub  epub order by epub.id desc";
 		pageResult = categoryService.getPageResult(sql, currentPage,
 				pagerMethod, 10);
 		return "success";

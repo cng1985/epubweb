@@ -19,10 +19,15 @@ public class CategoryServiceApps {
 				"spring.xml");
 		CategoryService service = context.getBean("categoryService",
 				CategoryService.class);
-		List list = service.find("from Epub");
-		Epub epub=new Epub();
-		service.add(epub);
-		System.out.println(list);
+		for (int i = 0; i < 100; i++) {
+			List list = service.find("from Epub");
+			System.out.println(list.size());
+			
+		}
+	
+//		Epub epub=new Epub();
+//		service.add(epub);
+//		System.out.println(list);
 		//setHibernateProperties(Properties)
 		//   hibernateProperties
 	}

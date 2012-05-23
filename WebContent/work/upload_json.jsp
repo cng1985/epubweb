@@ -23,7 +23,7 @@ String saveUrl  = request.getContextPath() + "/attached/";
 
 //定义允许上传的文件扩展名
 HashMap<String, String> extMap = new HashMap<String, String>();
-extMap.put("image", "gif,jpg,jpeg,png,bmp");
+extMap.put("image", "gif,jpg,jpeg,png,bmp,zip,epub");
 extMap.put("flash", "swf,flv");
 extMap.put("media", "swf,flv,mp3,wav,wma,wmv,mid,avi,mpg,asf,rm,rmvb");
 extMap.put("file", "doc,docx,xls,xlsx,ppt,htm,html,txt,zip,rar,gz,bz2");

@@ -19,6 +19,7 @@
 		<property name="connection.driver_class">
 			com.mysql.jdbc.Driver
 		</property>
+		
 		<mapping class="com.epublib.domain.Userinfo" />
 		<mapping class="com.epublib.domain.Epub" />
 		<mapping class="com.epublib.domain.Request" />
@@ -26,7 +27,7 @@
 		<mapping class="com.epublib.domain.Category" />
 		<mapping class="com.epublib.domain.Feedback" />
 		<mapping class="com.epublib.domain.Appstart" />
-
+        <class-cache usage="read-only" class="com.epublib.domain.Category"/>
 	</session-factory>
 
 </hibernate-configuration>

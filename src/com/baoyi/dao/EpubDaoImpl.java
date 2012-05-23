@@ -14,6 +14,22 @@ import com.epublib.domain.Epub;
 
 public class EpubDaoImpl {
 
+	public String getIndex_page_sql() {
+		return index_page_sql;
+	}
+
+	public void setIndex_page_sql(String index_page_sql) {
+		this.index_page_sql = index_page_sql;
+	}
+
+	public String getPage_sql() {
+		return page_sql;
+	}
+
+	public void setPage_sql(String page_sql) {
+		this.page_sql = page_sql;
+	}
+
 	private BasicDataSource dataSource;
 	private String sql_add;
 	private String sql_delete;
@@ -30,6 +46,14 @@ public class EpubDaoImpl {
 
 	private String index_page_sql;
 	private int pagesize;
+	public int getPagesize() {
+		return pagesize;
+	}
+
+	public void setPagesize(int pagesize) {
+		this.pagesize = pagesize;
+	}
+
 	private String page_sql;
 
 	public void add(Epub epub) {
@@ -115,7 +139,7 @@ public class EpubDaoImpl {
 		}
 	}
 
-	public List<Epub> pagetype(Integer curpage, Integer id) {
+	public List<Epub> page_by_category(Integer curpage, Integer id) {
 		List<Epub> items = new ArrayList<Epub>();
 
 		try {
@@ -148,6 +172,12 @@ public class EpubDaoImpl {
 			while (rs.next()) {
 				Epub item = new Epub();
 				item.setId(rs.getInt("id"));
+				item.setFileurl(rs.getString("fileurl"));
+				item.setPicurl(rs.getString("picurl"));
+				item.setCategoryid(rs.getInt("categoryid"));
+				item.setDescription(rs.getString("description"));
+				item.setName(rs.getString("name"));
+				item.setSourtnum(rs.getInt("sourtnum"));
 				items.add(item);
 				index++;
 				if (index >= p.getPageSize()) {
